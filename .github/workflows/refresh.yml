@@ -1,0 +1,61 @@
+name: PR colors
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version-file: .node-version
+      - run: npm run build
+
+  refresh:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: refresh-pr-colors
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version-file: .node-version
+      - run: npm run refresh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit changed snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data/prs.json; then exit 0; fi
+          export SNAPSHOT_SHA="$(git rev-parse HEAD:data/prs.json)"
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs'
+          writeFileSync(process.env.RUNNER_TEMP + '/pr-colors-commit.json', JSON.stringify({
+            message: 'refresh pr colors',
+            branch: process.env.GITHUB_REF_NAME,
+            sha: process.env.SNAPSHOT_SHA,
+            content: readFileSync('data/prs.json').toString('base64'),
+          }))
+          NODE
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/data/prs.json" --input "$RUNNER_TEMP/pr-colors-commit.json" --jq '.commit.html_url'

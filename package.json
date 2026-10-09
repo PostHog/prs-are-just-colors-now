@@ -1,0 +1,12 @@
+{
+  "name": "prs-are-just-colors-now",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "fetch": "node scripts/fetch.mjs",
+    "refresh": "npm run fetch && npm run build",
+    "dev": "npm run build && node scripts/serve.mjs"
+  }
+}
