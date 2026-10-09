@@ -52,12 +52,20 @@ with title, author, human/bot account type, and open/draft/closed/merged state.
 This follows [Cool Numbers Club](https://github.com/PostHog/cool-numbers-club):
 Cloudflare Workers static assets, built from a committed snapshot.
 
-Connect this repo to Cloudflare Workers Builds, use `main`, and set:
+The intended address is **https://prcolors.posthog.com**. The custom domain is
+declared in `wrangler.jsonc`; committing this config alone does not make it live.
+
+Connect this repo to Cloudflare Workers Builds in PostHog's Cloudflare account,
+with access to the `posthog.com` zone. Use `main`, and set:
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy`
 - Root directory: `/`
 
-`wrangler.jsonc` points at `dist`. Connect a custom domain in Cloudflare if wanted.
+`wrangler.jsonc` points at `dist`. On deployment, Wrangler attaches
+`prcolors.posthog.com` to this Worker. Cloudflare provisions its DNS record and
+HTTPS certificate; no separate CNAME or domain purchase is needed.
+See [Cloudflare Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+
 Nightly data commits trigger a new Cloudflare build once that connection is set up.
 Deploys don't fetch GitHub data, and the page makes no runtime API calls.

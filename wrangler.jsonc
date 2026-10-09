@@ -1,5 +1,6 @@
 {
   "name": "prs-are-just-colors-now",
   "compatibility_date": "2026-10-09",
-  "assets": { "directory": "./dist" }
+  "assets": { "directory": "./dist" },
+  "routes": [{ "pattern": "prcolors.posthog.com", "custom_domain": true }]
 }
