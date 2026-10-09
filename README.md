@@ -49,23 +49,17 @@ with title, author, human/bot account type, and open/draft/closed/merged state.
 
 ## Deploy
 
-This follows [Cool Numbers Club](https://github.com/PostHog/cool-numbers-club):
-Cloudflare Workers static assets, built from a committed snapshot.
-
-The intended address is **https://prcolors.posthog.com**. The custom domain is
-declared in `wrangler.jsonc`; committing this config alone does not make it live.
-
-Connect this repo to Cloudflare Workers Builds in PostHog's Cloudflare account,
-with access to the `posthog.com` zone. Use `main`, and set:
+HostHog serves this as a public static site at **https://colors.hosthog.dev**.
+The `colors` project connects to this repo's `main` branch, with:
 
 - Build command: `npm run build`
-- Deploy command: `npx wrangler deploy`
-- Root directory: `/`
+- Output directory: `dist`
+- Site type: static
+- Access: public
 
-`wrangler.jsonc` points at `dist`. On deployment, Wrangler attaches
-`prcolors.posthog.com` to this Worker. Cloudflare provisions its DNS record and
-HTTPS certificate; no separate CNAME or domain purchase is needed.
-See [Cloudflare Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+HostHog rebuilds on every push, including the nightly data-refresh commits.
+Pull-request previews remain employee-only. Build settings and access are managed
+on the HostHog project; no hosting token or infrastructure config is needed here.
+See the [HostHog guide](https://hosthog.dev/docs).
 
-Nightly data commits trigger a new Cloudflare build once that connection is set up.
 Deploys don't fetch GitHub data, and the page makes no runtime API calls.
