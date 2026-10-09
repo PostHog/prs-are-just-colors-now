@@ -1,4 +1,4 @@
-{"fetched":"2026-10-09T13:00:49.740Z","complete":true,"prs":[
+{"fetched":"2026-10-09T13:03:52.190Z","complete":true,"prs":[
 {"number":100000,"author":"veryayskiy","bot":false,"state":"merged","title":"fix: bk settings"},
 {"number":100001,"author":"sakce","bot":false,"state":"closed","title":"feat(games): add Ship It, a game about landing a pull request"},
 {"number":100002,"author":"posthog[bot]","bot":true,"state":"merged","title":"fix(linear): sync archived records instead of dropping them"},
@@ -13460,5 +13460,9 @@
 {"number":114519,"author":"rnegron","bot":false,"state":"draft","title":"chore(ci): move node20 actions to node24 releases"},
 {"number":114520,"author":"rnegron","bot":false,"state":"draft","title":"chore(ci): read run id from dispatch response"},
 {"number":114522,"author":"frankh","bot":false,"state":"open","title":"ci(frontend): run PR jest selection over three shards"},
-{"number":114523,"author":"posthog[bot]","bot":true,"state":"draft","title":"fix(notifications): show the plan prompt when member notifications are not on the plan"}
+{"number":114523,"author":"posthog[bot]","bot":true,"state":"draft","title":"fix(notifications): show the plan prompt when member notifications are not on the plan"},
+{"number":114524,"author":"Gilbert09","bot":false,"state":"open","title":"feat(warehouse-sources): add lightdash explores and scheduler tables"},
+{"number":114525,"author":"trunk-io[bot]","bot":true,"state":"draft","title":"trunk-merge/pr-114344/3b3d8fda-b480-4ae5-a2d3-1806e479c9e9"},
+{"number":114526,"author":"matheus-vb","bot":false,"state":"open","title":"fix(cohorts): never certify a reconcile from a slice missing history"},
+{"number":114528,"author":"Gilbert09","bot":false,"state":"open","title":"feat(warehouse-sources): add linode types, regions, transfer and invoice item tables"}
 ]}
