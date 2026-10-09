@@ -6,7 +6,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23114436'/%3E%3C/svg%3E">
 <style>
 :root{--background:#0b1013;--foreground:#dbe2db;--muted:#a4afa8;--dim:#69756e;--border:#53615a;--map-border:#dbe2db38;--map-outline:#dbe2db9c;--highlight:#fff;color-scheme:dark}
-:root[data-theme=light]{--background:#fff;--foreground:#101010;--muted:#555;--dim:#777;--border:#bbb;--map-border:#00000030;--map-outline:#0000009c;--highlight:#000;color-scheme:light}
+:root[data-theme=light]{--background:#fff;--foreground:#101010;--muted:#555;--dim:#777;--border:#bbb;--map-border:#00000030;--map-outline:#0000009c;--highlight:#eaff00;color-scheme:light}
 .theme-toggle{position:absolute;right:4vw;bottom:22px;border:0;background:var(--background);color:var(--dim);padding:10px 0;font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;cursor:pointer}
 .theme-toggle:focus-visible{outline:1px solid var(--foreground);outline-offset:4px}
 @media(max-width:600px){.theme-toggle{right:24px;bottom:10px}.note{max-width:calc(100% - 180px)}}
@@ -30,7 +30,7 @@
 <script>
 'use strict';
 const themeToggle=document.querySelector('.theme-toggle');let outline='#fff',background='#0b1013',mapOutline='#dbe2db9c';
-themeToggle.addEventListener('click',()=>{const light=themeToggle.getAttribute('aria-pressed')!=='true';document.documentElement.dataset.theme=light?'light':'dark';themeToggle.setAttribute('aria-pressed',String(light));themeToggle.textContent=light?'Dark mode':'Light mode';outline=light?'#000':'#fff';background=light?'#fff':'#0b1013';mapOutline=light?'#0000009c':'#dbe2db9c';requestDraw();});
+themeToggle.addEventListener('click',()=>{const light=themeToggle.getAttribute('aria-pressed')!=='true';document.documentElement.dataset.theme=light?'light':'dark';themeToggle.setAttribute('aria-pressed',String(light));themeToggle.textContent=light?'Dark mode':'Light mode';outline=light?'#eaff00':'#fff';background=light?'#fff':'#0b1013';mapOutline=light?'#0000009c':'#dbe2db9c';requestDraw();});
 const snapshot=JSON.parse(document.getElementById('snapshot').textContent);
 const planePosition=hex=>{const value=parseInt(hex,16);let x=0,y=0;for(let bit=0;bit<12;bit++){x|=((value>>>(2*bit))&1)<<bit;y|=((value>>>(2*bit+1))&1)<<bit;}return {x,y};};
 const hueLightness=hex=>{const value=parseInt(hex,16),r=(value>>>16)/255,g=((value>>>8)&255)/255,b=(value&255)/255,max=Math.max(r,g,b),min=Math.min(r,g,b),delta=max-min,lightness=(max+min)/2;let hue=0;if(delta){if(max===r)hue=((g-b)/delta+6)%6;else if(max===g)hue=(b-r)/delta+2;else hue=(r-g)/delta+4;hue*=60;}return {hue,lightness};};

@@ -20,7 +20,7 @@ Hue places colors by hue and lightness, packing overlapping colors into nearby c
 Hex assigns every RGB color a unique cell by interleaving its bits into two axes.
 Hover or tap the little map to reveal the projection's colors.
 The author selector outlines matching PRs without hiding any colors. Pick — to reset.
-Light mode switches to a white background and black outlines.
+Light mode switches to a white background and highlighter-yellow PR outlines.
 
 ## Refresh
 
