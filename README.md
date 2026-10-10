@@ -19,7 +19,8 @@ Open http://127.0.0.1:4173. `npm run build` rebuilds the standalone HTML.
 Hue places colors by hue and lightness, packing overlapping colors into nearby cells.
 Hex assigns every RGB color a unique cell by interleaving its bits into two axes.
 Hover or tap the little map to reveal the projection's colors.
-The author selector outlines matching PRs without hiding any colors. Pick — to reset.
+The selector outlines matching authors or PR states without hiding any colors. Pick —
+to reset. Open includes draft PRs; closed excludes merged PRs.
 Light mode switches to a white background and highlighter-yellow PR outlines.
 Click a ribbon segment or pixel to pin its highlight and footer link. Click elsewhere
 to release it; the footer link opens the selected PR without clearing its selection.
