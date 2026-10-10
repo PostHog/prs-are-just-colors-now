@@ -20,7 +20,7 @@ Hue places colors by hue and lightness, packing overlapping colors into nearby c
 Hex assigns every RGB color a unique cell by interleaving its bits into two axes.
 Hover or tap the little map to reveal the projection's colors.
 The selector outlines matching authors or PR states without hiding any colors. Pick —
-to reset. Open includes draft PRs; closed excludes merged PRs.
+to reset. Open excludes draft PRs; closed excludes merged PRs.
 Light mode switches to a white background and highlighter-yellow PR outlines.
 Click a ribbon segment or pixel to pin its highlight and footer link. Click elsewhere
 to release it; the footer link opens the selected PR without clearing its selection.
