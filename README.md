@@ -21,8 +21,11 @@ Hex assigns every RGB color a unique cell by interleaving its bits into two axes
 Hover or tap the little map to reveal the projection's colors.
 The author selector outlines matching PRs without hiding any colors. Pick — to reset.
 Light mode switches to a white background and highlighter-yellow PR outlines.
+Click a ribbon segment or pixel to pin its highlight and footer link. Click elsewhere
+to release it; the footer link opens the selected PR without clearing its selection.
 On small screens or devices without hover, the footer follows the next PR to land,
-without highlighting it. It disappears when every PR has landed.
+without highlighting it, unless a PR is pinned. It disappears when every PR has landed
+and nothing is pinned.
 The scrollbar is hidden; gestures and keyboard scrolling still work. The stage
 uses 96% of the small viewport height to leave room when mobile browser bars appear.
 
