@@ -29,6 +29,8 @@ without highlighting it, unless a PR is pinned. It disappears when every PR has 
 and nothing is pinned.
 The scrollbar is hidden; gestures and keyboard scrolling still work. The stage
 uses 96% of the small viewport height to leave room when mobile browser bars appear.
+Hold the artwork for 300 ms to scroll down at 160 pixels per second; release to stop.
+Quick clicks and taps still pin PRs, and swipes still scroll normally.
 
 ## Refresh
 
